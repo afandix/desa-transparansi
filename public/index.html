@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transparansi Anggaran & Pembangunan Desa</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1>Transparansi Anggaran & Pembangunan Desa</h1>
+        <nav><a href="./login.html" title="Masuk Admin">Masuk Admin</a></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <div class="flex">
+          <div>
+            <label for="yearSelect">Tahun</label>
+            <select id="yearSelect"></select>
+          </div>
+          <div class="small">
+            Pilih tahun untuk melihat ringkasan APBDes & proyek.
+          </div>
+        </div>
+
+        <div class="grid-3 mt-16" id="stats">
+          <div class="card">
+            <div class="small">Total Anggaran</div>
+            <div id="statAmount" style="font-weight: 700; font-size: 20px">
+              -
+            </div>
+          </div>
+          <div class="card">
+            <div class="small">Total Realisasi</div>
+            <div id="statRealized" style="font-weight: 700; font-size: 20px">
+              -
+            </div>
+          </div>
+          <div class="card">
+            <div class="small">% Realisasi</div>
+            <div id="statPercent" style="font-weight: 700; font-size: 20px">
+              -
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <h2>Rincian APBDes</h2>
+        <div class="card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kategori</th>
+                <th>Subkategori</th>
+                <th class="right">Anggaran</th>
+                <th class="right">Realisasi</th>
+                <th class="right">% Realisasi</th>
+              </tr>
+            </thead>
+            <tbody id="budgetBody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="right">TOTAL</td>
+                <td class="right" id="budgetTotalAmount">-</td>
+                <td class="right" id="budgetTotalRealized">-</td>
+                <td class="right" id="budgetTotalPercent">-</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <h2>Daftar Proyek</h2>
+        <div class="card" id="projectList">Belum ada data.</div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <div>
+        © Desa Transparansi — Dibangun sebagai capstone Hacktiv8 & IBM Granite.
+      </div>
+    </footer>
+
+    <!-- NANTI: script publik akan ditambahkan di LANGKAH 9 -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — Transparansi Desa</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1>Admin — Transparansi Desa</h1>
+        <nav class="flex">
+          <a href="./index.html">Dashboard Publik</a>
+          <button id="btnSignOut" class="btn btn-ghost">Keluar</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <div class="grid-2">
+          <div>
+            <h2>Anggaran (APBDes)</h2>
+            <form id="budgetForm">
+              <div class="grid-2">
+                <div>
+                  <label>Tahun</label>
+                  <select id="budgetYear"></select>
+                </div>
+                <div>
+                  <label>Kategori</label>
+                  <select id="budgetCategory" required>
+                    <option value="Pendapatan">Pendapatan</option>
+                    <option value="Belanja">Belanja</option>
+                    <option value="Pembiayaan">Pembiayaan</option>
+                  </select>
+                </div>
+              </div>
+              <label class="mt-12">Subkategori</label>
+              <input
+                id="budgetSub"
+                placeholder="contoh: Operasional Desa"
+                required
+              />
+
+              <div class="grid-2 mt-12">
+                <div>
+                  <label>Anggaran (IDR)</label>
+                  <input id="budgetAmount" type="number" min="0" value="0" />
+                </div>
+                <div>
+                  <label>Realisasi (IDR)</label>
+                  <input id="budgetRealized" type="number" min="0" value="0" />
+                </div>
+              </div>
+
+              <div class="flex mt-12">
+                <button class="btn btn-primary" type="submit" id="budgetSubmit">
+                  Simpan
+                </button>
+                <button
+                  class="btn btn-ghost"
+                  type="button"
+                  id="budgetCancel"
+                  style="display: none"
+                >
+                  Batal Edit
+                </button>
+                <div id="budgetMsg" class="small"></div>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <h2>Proyek Pembangunan</h2>
+            <form id="projectForm">
+              <div class="grid-2">
+                <div>
+                  <label>Tahun</label>
+                  <select id="projectYear"></select>
+                </div>
+                <div>
+                  <label>Status</label>
+                  <select id="projectStatus">
+                    <option value="perencanaan">Perencanaan</option>
+                    <option value="pelaksanaan">Pelaksanaan</option>
+                    <option value="selesai">Selesai</option>
+                  </select>
+                </div>
+              </div>
+
+              <label class="mt-12">Judul Proyek</label>
+              <input
+                id="projectTitle"
+                placeholder="contoh: Pembangunan Jalan RT 04"
+                required
+              />
+
+              <div class="grid-2 mt-12">
+                <div>
+                  <label>Progress (%)</label>
+                  <input
+                    id="projectProgress"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                </div>
+                <div>
+                  <label>Anggaran (IDR)</label>
+                  <input id="projectBudget" type="number" min="0" value="0" />
+                </div>
+              </div>
+
+              <label class="mt-12">Deskripsi</label>
+              <textarea
+                id="projectDesc"
+                rows="3"
+                placeholder="Ringkas: lokasi, lingkup pekerjaan, dsb."
+              ></textarea>
+
+              <div class="flex mt-12">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  id="projectSubmit"
+                >
+                  Simpan
+                </button>
+                <button
+                  class="btn btn-ghost"
+                  type="button"
+                  id="projectCancel"
+                  style="display: none"
+                >
+                  Batal Edit
+                </button>
+                <div id="projectMsg" class="small"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <h2>Data Anggaran per Tahun</h2>
+        <div class="card">
+          <div class="flex">
+            <div>
+              <label for="filterBudgetYear">Tahun</label>
+              <select id="filterBudgetYear"></select>
+            </div>
+            <div class="small">
+              Klik Edit untuk memperbarui, Hapus untuk menghapus.
+            </div>
+          </div>
+          <table class="table mt-12" id="budgetTable">
+            <thead>
+              <tr>
+                <th>Kategori</th>
+                <th>Subkategori</th>
+                <th class="right">Anggaran</th>
+                <th class="right">Realisasi</th>
+                <th class="right">% Realisasi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="budgetRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <h2>Data Proyek per Tahun</h2>
+        <div class="card">
+          <div class="flex">
+            <div>
+              <label for="filterProjectYear">Tahun</label>
+              <select id="filterProjectYear"></select>
+            </div>
+          </div>
+          <table class="table mt-12" id="projectTable">
+            <thead>
+              <tr>
+                <th>Judul</th>
+                <th>Status</th>
+                <th class="right">Progress</th>
+                <th class="right">Anggaran</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="projectRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- NANTI: admin.js akan ditambahkan di LANGKAH 8 -->
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>
